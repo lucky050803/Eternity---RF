@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Forum ETERNITY - Le Royaume Fracturé</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #ddd;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #2b2b2b;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid #444;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+  }
+  nav button {
+    background: none;
+    border: none;
+    color: #ccc;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  nav button:hover, nav button.active {
+    background: #333;
+    color: #fff;
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+  .post {
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .post h3 {
+    margin: 0 0 0.5rem 0;
+    color: #a6e22e;
+  }
+  .post .author {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.75rem;
+  }
+  .comments {
+    margin-top: 0.5rem;
+    border-top: 1px solid #444;
+    padding-top: 0.5rem;
+  }
+  .comment {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.3rem;
+  }
+  form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  form input[type="text"],
+  form textarea {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+  }
+  form button {
+    background: #a6e22e;
+    border: none;
+    padding: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #121212;
+    transition: background-color 0.3s;
+  }
+  form button:hover {
+    background: #8cc327;
+  }
+  footer {
+    text-align: center;
+    color: #555;
+    margin: 2rem 0 1rem 0;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  ETERNITY - Le Royaume Fracturé<br />
+  Forum des Éveillés
+</header>
+<nav>
+  <button class="active" data-target="lore">Lore</button>
+  <button data-target="personnages">Personnages</button>
+  <button data-target="rumeurs">Rumeurs</button>
+</nav>
+<main>
+  <section id="lore" class="active">
+    <article class="post" data-id="post1">
+      <h3>Le Cataclysme et la Ville</h3>
+      <div class="author">Admin</div>
+      <p>Un an avant aujourd'hui, un cataclysme a fracturé la réalité. La Ville immense où vous vivez est le refuge de fragments d’âmes humaines, prisonnières d’une boucle temporelle étrange.</p>
+      <div class="comments"></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Votre pseudo" required />
+        <textarea placeholder="Votre commentaire" rows="2" required></textarea>
+        <button type="submit">Répondre</button>
+      </form>
+    </article>
+    <article class="post" data-id="post2">
+      <h3>Le Baron</h3>
+      <div class="author">Admin</div>
+      <p>Le Baron est le dirigeant mystérieux de la Ville. Tout le monde l’aime et lui obéit sans question, mais son vrai visage reste inconnu et troublant.</p>
+      <div class="comments"></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Votre pseudo" required />
+        <textarea placeholder="Votre commentaire" rows="2" required></textarea>
+        <button type="submit">Répondre</button>
+      </form>
+    </article>
+  </section>
+  <section id="personnages">
+    <article class="post" data-id="post3">
+      <h3>Loma, la photographe mystérieuse</h3>
+      <div class="author">Admin</div>
+      <p>Une figure énigmatique qui cherche à dévoiler les secrets du Baron. Elle porte un appareil photo cassé et connaît des fragments du passé.</p>
+      <div class="comments"></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Votre pseudo" required />
+        <textarea placeholder="Votre commentaire" rows="2" required></textarea>
+        <button type="submit">Répondre</button>
+      </form>
+    </article>
+  </section>
+  <section id="rumeurs">
+    <article class="post" data-id="post4">
+      <h3>Les Disparitions</h3>
+      <div class="author">Rumeur</div>
+      <p>Des habitants disparaissent sans explication, surtout ceux qui posent trop de questions sur le Baron et la Ville.</p>
+      <div class="comments"></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Votre pseudo" required />
+        <textarea placeholder="Votre commentaire" rows="2" required></textarea>
+        <button type="submit">Répondre</button>
+      </form>
+    </article>
+  </section>
+</main>
+<footer>
+  © 2025 ETERNITY - Le Royaume Fracturé. Forum non officiel.
+</footer>
+
+<script>
+  // Navigation
+  const tabs = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  // Gestion des commentaires en localStorage
+  document.querySelectorAll('.comment-form').forEach(form => {
+    const post = form.closest('.post');
+    const postId = post.dataset.id;
+    const commentsDiv = post.querySelector('.comments');
+
+    // Charger commentaires stockés
+    const storedComments = JSON.parse(localStorage.getItem(postId) || '[]');
+    storedComments.forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'comment';
+      div.textContent = `${c.author}: ${c.text}`;
+      commentsDiv.appendChild(div);
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const author = form.querySelector('input').value.trim();
+      const text = form.querySelector('textarea').value.trim();
+      if (!author || !text) return;
+
+      const commentDiv = document.createElement('div');
+      commentDiv.className = 'comment';
+      commentDiv.textContent = `${author}: ${text}`;
+      commentsDiv.appendChild(commentDiv);
+
+      // Sauvegarder en localStorage
+      storedComments.push({ author, text });
+      localStorage.setItem(postId, JSON.stringify(storedComments));
+
+      form.reset();
+    });
+  });
+</script>
+</body>
+</html>
